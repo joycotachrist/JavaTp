@@ -14,7 +14,7 @@ public class Ecouteur implements MouseMotionListener, MouseListener {
     Fenetre f;
     Dessin d;
 
-    public Ecouteur(Fenetre j,Dessin d) {
+    public Ecouteur(Fenetre j, Dessin d) {
         f = j;
         this.d = d;
     }
@@ -35,13 +35,15 @@ public class Ecouteur implements MouseMotionListener, MouseListener {
         for (int i = 0; i < f.getHopital().getTabPersonne().size(); i++) {
             Personne p = (Personne) f.getHopital().getTabPersonne().elementAt(i);
 
-            int px = (int) (p.getX() * f.getScale() + 5);
-            int py = (int) (p.getY() * f.getScale() + 5);
+            // int px = (int) (p.getX() * f.getScale() + 10);
+            // int py = (int) (p.getY() * f.getScale() + 10);
+            int px = (int) (p.getX() * f.getScale() + 10);
+            int py = (int) (d.getHeight() - p.getY() * f.getScale() + 10);
 
-            if (Math.abs(x_cl - px) <= 5 && Math.abs(y_cl - py) <= 5) {
+            if (Math.abs(x_cl - px) <= 10 && Math.abs(y_cl - py) <= 10) {
                 System.out.println("Vous avez cliqué sur " + p.getNom());
                 d.afficherChamps(p);
-                
+
                 break;
             }
         }

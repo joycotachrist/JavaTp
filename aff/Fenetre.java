@@ -18,7 +18,8 @@ public class Fenetre extends JFrame {
     public Hopital getHopital() {
         return hopital;
     }
-    public int getScale(){
+
+    public int getScale() {
         return scale;
     }
 
@@ -28,22 +29,20 @@ public class Fenetre extends JFrame {
         this.setTitle("Hopital");
         this.setSize(1000, 1000);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // this.setBackground(Color.BLACK);
-
+        
         Dessin d = new Dessin(h2);
-        // // d.setLayout(new FlowLayout());
-         add(d);
+        // d.setLayout(new FlowLayout());
+        d.setBackground(Color.PINK);
+        add(d);
         this.setVisible(true);
 
-        d.addMouseListener(new Ecouteur(this,d));
+        d.addMouseListener(new Ecouteur(this, d));
 
         // bt.setSize(67, 67);
 
         // bt.setText("ajouter");
         // bt.addMouseListener(new Ecouteur(this));
-        //add(bt);
-
-        
+        // add(bt);
 
     }
 }

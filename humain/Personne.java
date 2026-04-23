@@ -8,7 +8,6 @@ import aff.Dessin;
 import javax.swing.*;
 import java.awt.*;
 
-
 public class Personne {
     protected String nom;
     protected Date dtn;
@@ -59,20 +58,20 @@ public class Personne {
     }
 
     // public int DansQuelleChambre(Vector chambres) {
-    //     for (int i = 0; i < chambres.size(); i++) {
-    //         Chambre ch = (Chambre) chambres.elementAt(i);
-    //         if (ch.getDimension().contient(this.getX(), this.getY())) {
-    //             return ch.getNumero();
-    //         }
-    //     }
-    //     return -1;
+    // for (int i = 0; i < chambres.size(); i++) {
+    // Chambre ch = (Chambre) chambres.elementAt(i);
+    // if (ch.getDimension().contient(this.getX(), this.getY())) {
+    // return ch.getNumero();
+    // }
+    // }
+    // return -1;
     // }
 
     public int DansQuelleChambre(Hopital h1) {
         for (int i = 0; i < h1.getToutLesChambres().size(); i++) {
             Chambre ch = (Chambre) h1.getToutLesChambres().elementAt(i);
             if (ch.contient(this.getX(), this.getY())) {
-                return ch.getNumero();    
+                return ch.getNumero();
             }
         }
         return -1;
@@ -96,32 +95,37 @@ public class Personne {
         }
 
     }
-    public void drawPersonne(Graphics g, int scale) {
+
+    public void drawPersonne(Graphics g, int scale,int hauteurFenetre) {
         if (this instanceof Patient) {
             g.setColor(Color.RED);
-        }else if (this instanceof Docteur) {
+        } else if (this instanceof Docteur) {
             g.setColor(Color.WHITE);
-            
+        } else {
+            g.setColor(Color.GREEN);
         }
-        
-        g.fillOval((int)(getX()*scale), (int)(getY()*scale), 10, 10);
+
+        g.fillOval((int) (getX() * scale), (int)(hauteurFenetre - getY() * scale), 20, 20);
         g.setColor(Color.BLACK);
-        g.drawString(getNom(), (int)(getX()*scale), (int)(getY()*scale));
+        g.drawString(getNom(), (int) (getX() * scale), (int) (hauteurFenetre - getY() * scale));
     }
-    public void paintMovement(Graphics g, double x,double y, int scale) {
-        
-        double destx = this.getX() + x ;
-        double desty = this.getY() + y ;
-       while (this.getX() < destx || this.getY() < desty) {
-            this.deplacer(x/10, y/10);
-           this.drawPersonne(g, scale);
+
+    public void paintMovement(Graphics g, double x, double y, int scale,int hauteurFenetre) {
+
+        double destx = this.getX() + x;
+        double desty = this.getY() + y;
+        while (Math.abs(this.getX() - destx) > 0.01 || Math.abs(this.getY() - desty) > 0.01) {
+            this.deplacer(x / 10, y / 10);
+            this.drawPersonne(g, scale, hauteurFenetre);
+            
             try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                System.out.println("Erreur lors du déplacement de la personne : " + e.getMessage());
+                Thread.sleep(50);
+            } catch (Exception e) {
+                System.out.println("Erreur : " + e.getMessage());
             }
         }
+
         this.setPos(destx, desty);
-       }
-    
+    }
+
 }

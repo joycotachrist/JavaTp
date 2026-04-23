@@ -39,22 +39,22 @@ public class Chambre {
         return false;
     }
 
-    public void dessiner(Graphics g, int scale) {
+    public void dessiner(Graphics g, int scale,int hauteurFenetre) {
 
-        double x = getDimension().getX();
-        double y = getDimension().getY();
-        // int ymax = 400;
-        double height = getDimension().getHeight();
-        double width = getDimension().getWidth();
-        // y = ymax-y*scale-height;
+        int x = (int)(getDimension().getX()*scale);
+        int y = (int)(getDimension().getY()*scale);
+        
+        int height = (int)(getDimension().getHeight()*scale);
+        int width = (int)(getDimension().getWidth()*scale);
+        y = (int)(hauteurFenetre -(y+height));
 
         g.setColor(Color.GRAY);
 
-        g.fillRect((int) x * scale, (int) y*scale , (int) width * scale, (int) height * scale);
+        g.fillRect( x ,  y ,  width ,height );
         g.setColor(Color.RED);
-        g.drawRect((int) x * scale, (int) y*scale, (int) width * scale, (int) height * scale);
-        g.drawString("Chambre " + getNumero(), (int) (x * scale + width * scale / 2),
-                (int) (y * scale + height * scale / 2));
+        g.drawRect( x ,  y,  width ,  height );
+        g.drawString("Chambre " + getNumero(),  (x  + width  / 2),
+                 (y  + height * scale / 2));
 
     }
 }
