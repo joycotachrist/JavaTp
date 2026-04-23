@@ -14,7 +14,7 @@ public class Dessin extends JPanel {
         this.setLayout(null);
     }
     public void afficherChamps( Personne p) {
-         System.out.println("getHeight() = " + getHeight());
+        //  System.out.println("getHeight() = " + getHeight());
         this.removeAll();
         JLabel selectedP = new JLabel("Vous avez selectionnes "+p.getNom());
 

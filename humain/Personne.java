@@ -104,10 +104,12 @@ public class Personne {
         } else {
             g.setColor(Color.GREEN);
         }
-
+    //    g.fillOval((int) (getX() * scale), (int)(getY() * scale), 20, 20);
         g.fillOval((int) (getX() * scale), (int)(hauteurFenetre - getY() * scale), 20, 20);
         g.setColor(Color.BLACK);
+        // g.drawString(getNom(), (int) (getX() * scale), (int) (getY() * scale));
         g.drawString(getNom(), (int) (getX() * scale), (int) (hauteurFenetre - getY() * scale));
+
     }
 
     public void paintMovement(Graphics g, double x, double y, int scale,int hauteurFenetre) {
