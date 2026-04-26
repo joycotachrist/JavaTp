@@ -2,6 +2,7 @@ package aff;
 import humain.*;
 import location.*;
 import javax.swing.*;
+import java.io.*;
 
 import java.awt.*;
 
@@ -38,7 +39,8 @@ public class Dessin extends JPanel {
                 double newX = Double.parseDouble(textFieldx.getText());
                 double newY = Double.parseDouble(textFieldy.getText());
                 p.paintMovement(g, newX, newY, 70, getHeight());
-                
+                h.check();
+                h.WriteinFile("hopital");
                 repaint(); 
 
             } catch (NumberFormatException ex) {
@@ -47,6 +49,7 @@ public class Dessin extends JPanel {
         });
         this.add(button);   
         this.repaint();
+        
     }
     public void paint(Graphics g) {
         super.paint(g);
@@ -59,7 +62,5 @@ public class Dessin extends JPanel {
             p.drawPersonne(g,70,getHeight());
         }
 
-        
-    
     }
 }

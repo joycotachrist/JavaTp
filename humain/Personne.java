@@ -15,6 +15,7 @@ public class Personne {
     protected double x;
     protected double y;
 
+   
     public void setDtn(Date dtn) {
         this.dtn = dtn;
     }
@@ -116,8 +117,8 @@ public class Personne {
 
         double destx = this.getX() + x;
         double desty = this.getY() + y;
-        while (Math.abs(this.getX() - destx) > 0.01 || Math.abs(this.getY() - desty) > 0.01) {
-            this.deplacer(x / 10, y / 10);
+        while (Math.abs(this.getX() - destx) > 0.01) {
+            this.deplacer(x / 10, 0);
             this.drawPersonne(g, scale, hauteurFenetre);
             
             try {
@@ -126,8 +127,18 @@ public class Personne {
                 System.out.println("Erreur : " + e.getMessage());
             }
         }
-
+         while (Math.abs(this.getY() - desty) > 0.01) {
+            this.deplacer(0, y / 10);
+            this.drawPersonne(g, scale, hauteurFenetre);
+            
+            try {
+                Thread.sleep(50);
+            } catch (Exception e) {
+                System.out.println("Erreur : " + e.getMessage());
+            }
+        }
         this.setPos(destx, desty);
+        
     }
 
 }

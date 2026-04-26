@@ -32,7 +32,7 @@ public class Fenetre extends JFrame {
         
         Dessin d = new Dessin(h2);
         // d.setLayout(new FlowLayout());
-        d.setBackground(Color.PINK);
+        d.setBackground(new Color(119,136,153));
         add(d);
         this.setVisible(true);
 

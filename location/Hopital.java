@@ -55,7 +55,37 @@ public class Hopital {
             }
         }
     }
+public void WriteinFile(String fileName) {
+         FileWriter fw;
+        try {
+            fw = new FileWriter(fileName+".txt");
+            fw.write("Tout les positions de chaques personne : \n");
+            for (int i = 0; i < tabPersonne.size(); i++) {
+                Personne act = (Personne) tabPersonne.elementAt(i);
+                fw.write("- " + act.getNom() + " (" + act.getX() + " , " + act.getY() + ")\n");
+            }
+             for (int i = 0; i < toutLesChambres.size(); i++) {
+            Chambre act = (Chambre) toutLesChambres.elementAt(i);
+            int count = 0;
+            fw.write("Dans la Chambre numero : " + act.getNumero() + "se trouve : \n");
+            for (int j = 0; j < tabPersonne.size(); j++) {
+                Personne p = (Personne) tabPersonne.elementAt(j);
+                if (act.getNumero() == p.DansQuelleChambre(this)) {
+                    count++;
+                    fw.write("-" + p.getNom() + " (" + p.getX() + "," + p.getY() + ")\n");
 
+                }
+            }
+            if (count <= 0) {
+                fw.write("Aucune Personne \n");
+            }
+        }
+            fw.close();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     public Vector[] check2() {
         Vector v[] = new Vector[toutLesChambres.size()];
         for (int i = 0; i < toutLesChambres.size(); i++) {

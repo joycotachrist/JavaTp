@@ -196,6 +196,11 @@ public class Affichage {
         Docteur d3 = new Docteur("D3", new Date(20, 10, 1994));
         d3.setSpecialite(new Maladie[] { m2, m3 });
         d3.setPos(12, 11);
+        Visiteur v1 = new Visiteur("V1", 13,4);
+        Visiteur v2 = new Visiteur("V2", 6,9);
+        Visiteur v3 = new Visiteur("V3", 8,3);
+
+        
 
         // Docteur d4 = new Docteur("D4", new Date(12, 03, 2010));
         // d4.setSpecialite(new Maladie[] { m1, m2 });
@@ -236,6 +241,9 @@ public class Affichage {
         tabPersonne.add(d1);
         tabPersonne.add(d2);
         tabPersonne.add(d3);
+        tabPersonne.add(v1);
+        tabPersonne.add(v2);
+        tabPersonne.add(v3);
         // tabPersonne.add(d4);
 
         Vector toutLesChambres = new Vector();
